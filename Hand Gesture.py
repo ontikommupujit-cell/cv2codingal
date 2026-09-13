@@ -19,13 +19,13 @@ while True:
         max_contour=max(contours,key=cv2.contourArea)
         if cv2.contourArea(max_contour)>500:
             x,y,w,h=cv2.boundingRect(max_contour)
-            cv2.rectangle(frame(x,y),(x+w,y+h),(0,255,0),2)
+            cv2.rectangle(frame,(x,y),(x+w,y+h),(0,255,0),2)
             center_x=int(x+w/2)
             center_y=int(y+h/2)
             cv2.circle(frame,(center_x,center_y),5,(0,0,255),-1)
         cv2.imshow('Original Frame',frame)
         cv2.imshow('Filtered Frame',result)
-        if cv2.waitkey(1)&0xFF==ord('q'):
+        if cv2.waitKey(1)&0xFF==ord('q'):
             break
-        cap.release()
-        cv2.destroyAllWindows()
+cap.release()
+cv2.destroyAllWindows()
